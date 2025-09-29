@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ken - Website Developer | Frontend & Jamstack</title>
+    <meta name="description" content="นักพัฒนาเว็บไซต์อิสระ เชี่ยวชาญ Frontend & Jamstack อายุ 22 ปี">
+
+    <!-- เชื่อมโยงไปยังไฟล์ CSS ในโฟลเดอร์ static -->
+    <link rel="stylesheet" href="../static/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Translations data for i18n (inline for reliable access) -->
+    <script id="translations-data" type="application/json">{{ T | tojson }}</script>
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="background-overlay"></div>
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="particles-container" id="particles"></div>
+
+    <header class="header-glass">
+        <nav class="container">
+            <a href="#" class="logo">
+                <span class="logo-text">Ken Pattaraphong</span>
+                <span class="logo-dot"></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about" class="nav-link">เกี่ยวกับผม</a></li>
+                <li><a href="#skills" class="nav-link">ทักษะ</a></li>
+                <li><a href="#portfolio" class="nav-link">ผลงาน</a></li>
+                <li><a href="#contact" class="nav-link">ติดต่อ</a></li>
+            </ul>
+            <div class="nav-controls">
+                <select id="lang" class="select-lang" aria-label="ภาษา">
+                    <option value="th">TH</option>
+                    <option value="en">EN</option>
+                    <option value="ja">JP</option>
+                </select>
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+            </div>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="hero-greeting">
+                            <span class="wave-emoji">👋</span>
+                            <span class="typing-text" id="typing-text">สวัสดีครับ ผมเค็น (Ken)</span>
+                        </div>
+                        <h1 class="hero-title">
+                            <span class="title-line">Website Developer</span>
+                            <span class="title-line gradient-text">Frontend & Jamstack</span>
+                        </h1>
+                        <p class="hero-description">
+                            นักพัฒนาเว็บไซต์อิสระอายุ 22 ปี ที่มีความเชี่ยวชาญในการออกแบบและพัฒนาเว็บไซต์สำหรับธุรกิจขนาดเล็กถึงขนาดกลาง โดยใช้เทคโนโลยีที่ทันสมัยเพื่อสร้างเว็บไซต์ที่โหลดเร็วและปรับแต่งได้ง่าย
+                        </p>
+                        <div class="hero-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Next.js</span>
+                            <span class="tag">Performance</span>
+                            <span class="tag">Animation</span>
+                        </div>
+                        <div class="button-group">
+                            <a href="#portfolio" class="btn btn-primary">
+                                <span>ดูผลงาน</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="#contact" class="btn btn-secondary">
+                                <span>ติดต่อ</span>
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="floating-card card-1">
+                            <i class="fas fa-code"></i>
+                            <span>Frontend</span>
+                        </div>
+                        <div class="floating-card card-2">
+                            <i class="fas fa-rocket"></i>
+                            <span>Performance</span>
+                        </div>
+                        <div class="floating-card card-3">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Responsive</span>
+                        </div>
+                        <div class="hero-avatar">
+                            <div class="avatar-glow"></div>
+                            <div class="avatar-content">
+                                <img src="https://cdnb.artstation.com/p/assets/images/images/077/620/113/large/suchit-sali-feral-gojo.jpg?1719921926" alt="Ken Avatar">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">✨ เกี่ยวกับผม</h2>
+                    <p class="section-subtitle">ข้อมูลส่วนตัวและความสนใจของผม</p>
+                </div>
+                <div class="about-grid">
+                    <div class="about-card reveal" data-delay="100">
+                        <div class="card-icon">
+                            <i class="fas fa-birthday-cake"></i>
+                        </div>
+                        <h4>อายุ</h4>
+                        <p>22 ปี</p>
+                    </div>
+                    <div class="about-card reveal" data-delay="200">
+                        <div class="card-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h4>สถานะ</h4>
+                        <p>หางานตำแหน่ง Developer</p>
+                    </div>
+                    <div class="about-card reveal" data-delay="300">
+                        <div class="card-icon">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h4>ภาษา</h4>
+                        <p>ไทย / อังกฤษ</p>
+                    </div>
+                    <div class="about-card reveal" data-delay="400">
+                        <div class="card-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4>สิ่งที่ชอบ</h4>
+                        <p>UI, Performance, Animation</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">🛠️ ทักษะและเครื่องมือ</h2>
+                    <p class="section-subtitle">เทคโนโลยีและเครื่องมือที่ผมเชี่ยวชาญ</p>
+                </div>
+                <div class="skills-container">
+                    <div class="skill-category reveal" data-delay="100">
+                        <h3 class="category-title">Frontend</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <i class="fab fa-html5"></i>
+                                <span>HTML</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-css3-alt"></i>
+                                <span>CSS / Tailwind</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-js-square"></i>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-react"></i>
+                                <span>React</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-category reveal" data-delay="200">
+                        <h3 class="category-title">Framework & Tools</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <i class="fas fa-layer-group"></i>
+                                <span>Next.js</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <span>Performance</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>Responsive</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-palette"></i>
+                                <span>Animation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">🚀 ตัวอย่างผลงาน</h2>
+                    <p class="section-subtitle">นี่คือตัวอย่างผลงานบางส่วนของผมครับ</p>
+                </div>
+                <div class="portfolio-grid">
+                    <div class="portfolio-card reveal" data-delay="100">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <h4>Portfolio Site</h4>
+                        </div>
+                        <p>One-page portfolio ที่เน้น animation และการโหลดที่รวดเร็ว (Lighthouse 98)</p>
+                        <div class="card-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">Animation</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-card reveal" data-delay="200">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h4>Startup Landing</h4>
+                        </div>
+                        <p>Landing page พร้อมระบบฟอร์มและ analytics สำหรับธุรกิจ</p>
+                        <div class="card-tech">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">Form</span>
+                            <span class="tech-tag">Analytics</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-card reveal" data-delay="300">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <h4>eCommerce Lite</h4>
+                        </div>
+                        <p>ร้านค้าออนไลน์ขนาดเล็กที่ปรับแต่งง่ายและรองรับมือถือ</p>
+                        <div class="card-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Mobile</span>
+                            <span class="tech-tag">Responsive</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-card reveal" data-delay="400">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-blog"></i>
+                            </div>
+                            <h4>Blog / CMS</h4>
+                        </div>
+                        <p>บล็อกส่วนตัวที่เชื่อมต่อกับ headless CMS และ CDN เพื่อความเร็วสูงสุด</p>
+                        <div class="card-tech">
+                            <span class="tech-tag">CMS</span>
+                            <span class="tech-tag">CDN</span>
+                            <span class="tech-tag">Performance</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-cta reveal" data-delay="500">
+                    <a href="https://github.com/Kenjiiiii168" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+                        <span>ดูผลงานทั้งหมด</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">📬 ติดต่อ</h2>
+                    <p class="section-subtitle">สนใจร่วมงานหรือต้องการสอบถามรายละเอียดเพิ่มเติม สามารถติดต่อได้ที่</p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-card reveal" data-delay="100">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h4>Email</h4>
+                            <span>iamkenkrub@gmail.com</span>
+                        </div>
+                        <a href="mailto:iamkenkrub@gmail.com" class="contact-link">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    <div class="contact-card reveal" data-delay="200">
+                        <div class="contact-icon">
+                            <i class="fab fa-line"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h4>LINE</h4>
+                            <span>kenijikrub</span>
+                        </div>
+                        <a href="#" class="contact-link">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-cta reveal" data-delay="300">
+                    <p>หรือส่งข้อความหาผมได้โดยตรง <a href="#contact" class="inline-link">ที่นี่</a></p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>Made with <i class="fas fa-heart"></i> by Ken</p>
+                <p class="copyright">© 2025 All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot">
+        <button id="chatToggle" class="chat-fab" aria-label="Open chat">💬</button>
+        <div id="chatWindow" class="chat-window" hidden>
+            <div class="chat-header">
+                <strong id="chat_title">Chat Assistant</strong>
+                <button id="chatClose" class="chat-close" aria-label="Close">✕</button>
+            </div>
+            <div id="chatLog" class="chat-log" role="log" aria-live="polite"></div>
+            <form id="chatForm" class="chat-input">
+                <input id="chatText" type="text" placeholder="Type a message..." autocomplete="off" />
+                <button id="chatSend" class="btn btn-primary" type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ใช้แบ็กเอนด์ Gemini ผ่าน Flask -->
+    <script>window.CHAT_API_BASE = 'http://127.0.0.1:5001';</script>
+    <!-- เชื่อมโยงไปยังไฟล์ JavaScript ในโฟลเดอร์ static -->
+    <script src="../static/app.js"></script>
+</body>
+</html>
