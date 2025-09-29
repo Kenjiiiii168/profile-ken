@@ -279,8 +279,21 @@ function applyTranslations(lang, TRANSLATIONS) {
     // Footer
     const footerP = document.querySelector('.footer-content p');
     if (footerP) {
-        footerP.childNodes.forEach((n) => {
-            if (n.nodeType === Node.TEXT_NODE) n.textContent = lang === 'ja' ? 'Ken により制作' : (lang === 'en' ? 'Made with ' : 'Made with ');
+        // Expect structure: [textBefore, <i.heart>, textAfter]
+        const nodes = Array.from(footerP.childNodes);
+        const textBefore = nodes.find((n) => n.nodeType === Node.TEXT_NODE);
+        const textAfter = nodes.reverse().find((n) => n.nodeType === Node.TEXT_NODE);
+
+        if (lang === 'ja') {
+            if (textBefore) textBefore.textContent = 'Ken により制作';
+            if (textAfter) textAfter.textContent = '';
+        } else if (lang === 'en') {
+            if (textBefore) textBefore.textContent = 'Made with ';
+            if (textAfter) textAfter.textContent = ' by Ken';
+        } else {
+            if (textBefore) textBefore.textContent = 'สร้างด้วย ';
+            if (textAfter) textAfter.textContent = ' โดย Ken';
+        }
         });
     }
 
