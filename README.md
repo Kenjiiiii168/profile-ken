@@ -1,3 +1,4 @@
+https://github.com/Kenjiiiii168/profile-ken.git
 # 👋 สวัสดีครับ ผมเค็น (Ken)
 
 ## 👨‍💻 Website Developer | Frontend & Jamstack
