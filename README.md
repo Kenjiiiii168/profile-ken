@@ -1,4 +1,4 @@
-[https://github.com/Kenjiiiii168/profile-ken.git](https://kenjiiiii168.github.io/profile-ken/)
+[[https://github.com/Kenjiiiii168/profile-ken.git](https://kenjiiiii168.github.io/profile-ken/)](https://kenjiiiii168.github.io/profile-ken/)
 # 👋 สวัสดีครับ ผมเค็น (Ken)
 
 ## 👨‍💻 Website Developer | Frontend & Jamstack
