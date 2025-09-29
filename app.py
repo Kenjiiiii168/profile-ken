@@ -91,6 +91,10 @@ def chat():
         print(f"Error in /chat: {e}")
         return jsonify({"error": "Server error"}), 500
 
-if __name__ == '__main__':
-    # Using a different port just in case
-    app.run(debug=True, port=5001)
+@app.get("/healthz")
+def healthz():
+    return "ok", 200
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))  # เผื่อรัน local
+    app.run(host="0.0.0.0", port=port)
