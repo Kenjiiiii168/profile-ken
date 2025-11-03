@@ -1,4 +1,4 @@
-https://profile-ken.onrender.com
+กดลิ้งค์เพื่อดูหน้าเว็บ => https://profile-ken.onrender.com
 # 👋 สวัสดีครับ ผมเค็น (Ken)
 
 ## 👨‍💻 Website Developer | Frontend & Jamstack
