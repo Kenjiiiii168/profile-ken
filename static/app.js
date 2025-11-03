@@ -110,13 +110,10 @@ function initLanguageAndThemeAndChat() {
                 const local = answerFromKnowledge(text, lang, T);
                 let reply = local;
 
-                // 2) Prefer backend Gemini if configured
-                const apiBase = typeof window.CHAT_API_BASE === 'string' && window.CHAT_API_BASE.trim().length > 0
-                  ? window.CHAT_API_BASE.trim()
-                  : null;
-                if (!reply && apiBase) {
+                // 2) Try same-origin backend first, then configured base if provided
+                if (!reply) {
                     try {
-                        const resp = await fetch(`${apiBase}/chat`, {
+                        const resp = await fetch(`/chat`, {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ message: text, lang })
@@ -126,13 +123,39 @@ function initLanguageAndThemeAndChat() {
                             reply = data.reply || reply;
                         }
                     } catch (e) {
-                        // ignore and fallback to client-side Gemini
+                        // ignore and try configured base below
+                    }
+                }
+
+                if (!reply) {
+                    const apiBase = typeof window.CHAT_API_BASE === 'string' && window.CHAT_API_BASE.trim().length > 0
+                      ? window.CHAT_API_BASE.trim()
+                      : null;
+                    if (apiBase) {
+                        try {
+                            const resp = await fetch(`${apiBase}/chat`, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ message: text, lang })
+                            });
+                            if (resp.ok) {
+                                const data = await resp.json();
+                                reply = data.reply || reply;
+                            }
+                        } catch (e) {
+                            // ignore and fallback to client-side Gemini
+                        }
                     }
                 }
 
                 // 3) Fallback to client-side Gemini
                 if (!reply) {
-                    reply = await generateWithGemini(text, lang, T);
+                    try {
+                        reply = await generateWithGemini(text, lang, T);
+                    } catch (e) {
+                        const lang2 = localStorage.getItem('lang') || 'th';
+                        reply = lang2 === 'th' ? 'แบ็กเอนด์ไม่ตอบสนองและไม่มี API key ฝั่งไคลเอนต์' : (lang2 === 'ja' ? 'バックエンドが応答せず、クライアント API キーもありません' : 'Backend not responding and no client API key');
+                    }
                 }
 
                 const last = chatLog.querySelector('.bubble:last-child');
@@ -294,7 +317,6 @@ function applyTranslations(lang, TRANSLATIONS) {
             if (textBefore) textBefore.textContent = 'สร้างด้วย ';
             if (textAfter) textAfter.textContent = ' โดย Ken';
         }
-        });
     }
 
     // Chat UI
